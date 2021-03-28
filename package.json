@@ -8,7 +8,9 @@
   },
   "scripts": {
     "test": "mocha tests",
-    "start": "node index.js"
+    "start": "ts-node dist/index.js",
+    "dev": "ts-node-dev --respawn index.js",
+    "build": "tsc -p ."
   },
   "keywords": [
     "Xendit"
