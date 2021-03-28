@@ -126,7 +126,7 @@ describe('API tests', () => {
         });
 
         it('should return error_code with server error before insert record', (done) => {
-            sinon.stub(db, 'run').yieldsAsync({ err: 'db error' }, null);
+            sinon.stub(db, 'run').throws({ err: 'db error' });
             request(app)
                 .post('/rides')
                 .send(body)
@@ -140,7 +140,7 @@ describe('API tests', () => {
         });
 
         it('should return error_code with server error after insert record', (done) => {
-            sinon.stub(db, 'all').yieldsAsync({ err: 'db error' }, null);
+            sinon.stub(db, 'all').throws({ err: 'db error' });
             request(app)
                 .post('/rides')
                 .send(body)
@@ -167,7 +167,7 @@ describe('API tests', () => {
         });
 
         it('should return error_code with server error', (done) => {
-            sinon.stub(db, 'all').yieldsAsync({ err: 'db error' }, null);
+            sinon.stub(db, 'all').throws({ err: 'db error' });
             request(app)
                 .get('/rides')
                 .expect('Content-Type', /json/)
@@ -180,7 +180,7 @@ describe('API tests', () => {
         });
 
         it('should return error_code with no rides found', (done) => {
-            sinon.stub(db, 'all').yieldsAsync(null, []);
+            sinon.stub(db, 'all').returns([]);
             request(app)
                 .get('/rides')
                 .expect('Content-Type', /json/)
@@ -208,7 +208,7 @@ describe('API tests', () => {
         });
 
         it('should return error_code with server error', (done) => {
-            sinon.stub(db, 'all').yieldsAsync({ err: 'db error' }, null);
+            sinon.stub(db, 'all').throws({ err: 'db error' });
             request(app)
                 .get(`/rides/${rideId}`)
                 .expect('Content-Type', /json/)
@@ -221,7 +221,7 @@ describe('API tests', () => {
         });
 
         it('should return error_code with no rides found', (done) => {
-            sinon.stub(db, 'all').yieldsAsync(null, []);
+            sinon.stub(db, 'all').returns([]);
             request(app)
                 .get(`/rides/${rideId}`)
                 .expect('Content-Type', /json/)
