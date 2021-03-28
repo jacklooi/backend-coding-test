@@ -7,6 +7,7 @@
     "test": "tests"
   },
   "scripts": {
+    "lint": "tsc --noEmit && eslint --ext .js --ext .ts",
     "test": "mocha tests",
     "start": "ts-node dist/index.js",
     "dev": "ts-node-dev --respawn index.js",
@@ -26,7 +27,7 @@
   "devDependencies": {
     "@types/node": "^14.14.37",
     "@types/winston": "^2.4.4",
-    "eslint": "^7.23.0",
+    "eslint": "^5.16.0",
     "mocha": "^6.1.4",
     "nyc": "^15.1.0",
     "pre-push": "^0.1.1",
