@@ -15,6 +15,9 @@
     "dev": "ts-node-dev --respawn index.js",
     "build": "tsc -p ."
   },
+  "pre-push": [ 
+    "test"
+  ],
   "keywords": [
     "Xendit"
   ],
