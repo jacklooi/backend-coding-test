@@ -9,6 +9,8 @@
   "scripts": {
     "lint": "tsc --noEmit && eslint --ext .js --ext .ts",
     "test": "mocha tests",
+    "coverage": "nyc npm run test",
+    "coverage:report": "nyc report --reporter=lcov --reporter=text",
     "start": "ts-node dist/index.js",
     "dev": "ts-node-dev --respawn index.js",
     "build": "tsc -p ."
