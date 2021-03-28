@@ -1,0 +1,99 @@
+swagger: "2.0"
+info:
+  description: "A coding assessment for Xendit backend interviews."
+  version: "1.0.0"
+  title: "backend-coding-test"
+host: "localhost:8010"
+basePath: "/"
+schemes:
+- "https"
+- "http"
+paths:
+  /health:
+    get:
+      tags:
+      - "health"
+      summary: "Ping for health check"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+  /rides:
+    post:
+      tags:
+      - "rides"
+      summary: "Insert rides information"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "body"
+        in: "body"
+        description: "Start latitude in number"
+        required: true
+        schema:
+          $ref: "#/definitions/Rides"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid status value"
+    get:
+      tags:
+      - "rides"
+      summary: "Get all rides information"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid status value"
+  /rides/{id}:
+    get:
+      tags:
+      - "rides"
+      summary: "Get all rides information"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "id"
+        in: "path"
+        description: "Rides id"
+        required: true
+        type: "string"
+      responses:
+        "200":
+          description: "successful operation"
+        "400":
+          description: "Invalid status value"
+definitions:
+  Rides:
+    type: "object"
+    properties:
+      start_lat:
+        type: "integer"
+        format: "int32"
+      start_long:
+        type: "integer"
+        format: "int32"
+      end_lat:
+        type: "integer"
+        format: "int32"
+      end_long:
+        type: "integer"
+        format: "int32"
+      rider_name:
+        type: "string"
+      driver_name:
+        type: "string"
+      driver_vehicle:
+        type: "string"
